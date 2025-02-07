@@ -1,19 +1,17 @@
-import type { Metadata } from "next";
-import { Geist, Geist_Mono } from "next/font/google";
-import "./globals.css";
-import Navbar from "../app/layout/Navbar";
+import type { Metadata } from 'next';
+import { Inter } from 'next/font/google';
+import './globals.css';
+import Navbar from '../app/layout/Navbar';
+import './theme-config.css'
 import '@radix-ui/themes/styles.css';
-import { Theme } from '@radix-ui/themes';
+import { Theme, ThemePanel } from '@radix-ui/themes';
 
-const geistSans = Geist({
-  variable: "--font-geist-sans",
+const inter = Inter({
+  variable: "--font-inter",
   subsets: ["latin"],
+  display: 'swap'
 });
 
-const geistMono = Geist_Mono({
-  variable: "--font-geist-mono",
-  subsets: ["latin"],
-});
 
 export const metadata: Metadata = {
   title: "Issue Tracker",
@@ -27,12 +25,13 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={`${geistSans.variable} ${geistMono.variable} antialiased`} >
-        <Theme>
+      <body className={`${inter.variable}`} >
+        <Theme accentColor="tomato" radius="large">
           <Navbar />
           <main className="p-5">
             {children}
           </main>
+          {/* <ThemePanel /> */}
         </Theme>
       </body>
     </html>
