@@ -1,10 +1,10 @@
 'use client'
 
-import Link from 'next/link'
 import React from 'react'
+import Link from 'next/link'
+import classNames from 'classnames'
 import { FaBug } from "react-icons/fa";
 import { usePathname } from 'next/navigation';
-import { classnames } from 'classnames'
 
 const Navbar = () => {
     {/* Make Navbar Active */}
@@ -23,8 +23,8 @@ const Navbar = () => {
             {links.map(link => 
                 <Link 
                     key={link.href} 
-                    className = {
-                        classnames({
+                    className={
+                        classNames({
                             'text-zinc-900': link.href === activePath,
                             'text-zinc-500': link.href !== activePath,
                             'hover:text-zinc-800 transition-colors': true
