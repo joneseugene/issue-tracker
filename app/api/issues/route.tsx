@@ -1,5 +1,6 @@
 import { NextRequest, NextResponse } from "next/server";
 import { PrismaClient } from "@prisma/client"
+import { createIssueSchema } from "@/app/validationSchema";
 
 const prisma = new PrismaClient();
 
