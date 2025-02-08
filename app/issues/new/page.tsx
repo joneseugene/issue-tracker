@@ -10,6 +10,7 @@ import dynamic from 'next/dynamic';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { createIssueSchema } from "@/app/validationSchema";
 import { z } from "zod";
+import { ErrorMessage } from "@/app/components/ErrorMessage";
 
 type IssueForm = z.infer<typeof createIssueSchema>
 const SimpleMDE = dynamic(() => import('react-simplemde-editor'), {
@@ -41,11 +42,11 @@ const NewIssue = () => {
           
           })}>
             <TextField.Root placeholder="Title..." {...register('title')}/>
-            {errors.title && <Text color="red" as="p">{errors.title.message}</Text>}
+            <ErrorMessage>{errors.title?.message}</ErrorMessage>
             <Controller
                 name="description" control={control} render={({ field }) => <SimpleMDE placeholder="Description…" {...field} /> }
             />
-            {errors.description && <Text color="red" as="p">{errors.description.message}</Text>}
+            <ErrorMessage>{errors.description?.message}</ErrorMessage>
             <Button>Submit</Button>
         </form>
     </div>
